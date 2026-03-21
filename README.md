@@ -5,7 +5,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-preprint-b31b1b.svg)](https://arxiv.org/abs/XXXX.XXXXX)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Dataset](https://img.shields.io/badge/dataset-HuggingFace-orange.svg)](https://huggingface.co/datasets/XXXX)
+[![Dataset](https://img.shields.io/badge/dataset-HuggingFace-orange.svg)](https://huggingface.co/datasets/redsandr/cognifi-investor-bias)
 
 CogniFi detects FOMO, loss aversion, and confirmation bias from investor-generated text and delivers friction-based behavioral interventions before trade execution. Rule-based and fully interpretable in every output is traceable to specific rules and keyword matches.
 
