@@ -70,8 +70,7 @@ The rule-based design is intentional. In behavioral intervention contexts, unexp
 | Stockbit | 882 | 84.6% |
 | X.com | 85 | 8.1% |
 | Reddit | 32 | 3.1% |
-| WhatsApp | 23 | 2.2% |
-| Threads | 21 | 2.0% |
+| Threads | 44 | 4.2% |
 
 **Language distribution:**
 
